@@ -1,0 +1,23 @@
+﻿body {
+    background-color: ivory;
+    padding: 0;
+}
+
+#canvas {
+    border: 1px solid red;
+}
+
+#canvasContainer {
+    position: relative;
+}
+
+#canvas, #contextMenu {
+    position: absolute;
+}
+
+#contextMenu {
+    border: 1px solid green;
+    background: white;
+    list-style: none;
+    padding: 3px;
+}

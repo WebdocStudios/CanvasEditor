@@ -3,33 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
-
-    <style>
-        body {
-            background-color: ivory;
-            padding: 0;
-        }
-
-        #canvas {
-            border: 1px solid red;
-        }
-
-        #canvasContainer {
-            position: relative;
-        }
-
-        #canvas, #contextMenu {
-            position: absolute;
-        }
-
-        #contextMenu {
-            border: 1px solid green;
-            background: white;
-            list-style: none;
-            padding: 3px;
-        }
-    </style>
+    <title>CanvasEditor</title>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -38,7 +12,7 @@
 <body>
 
     <canvas id="myCanvas" width="500" height="300" style="border: 1px solid #d3d3d3; background-color: white"></canvas>
-    <h4>Press "f" to display hit menu</h4>
+    <h4>Press "f" to cause "contentAssist" windows to display</h4>
     <ul id="contextMenu" style="display: none">
         <li>fa</li>
         <li>function</li>
@@ -46,6 +20,12 @@
     </ul>
 
     <script>
+
+        /**
+         *  This is just a proof of concept to show that HTMl canvas can be used for a simple text editor with a blking cursor and a content assist (intelliSense) window etc.
+         *  The next steps are to migrate these functions in to a class, allow multiple lines, and to line up the contentAssist window with the last word typed
+         */
+
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
 
@@ -111,13 +91,11 @@
             //Listen for the letter "f"
             if (character == 'f') {
 
-                ShowHintMenu();
+                showContentAssist();
 
             }
         }
 
-
-        window.addEventListener('keydown', handleKeypress, false);
 
         function handleKeypress(e) {
 
@@ -139,26 +117,20 @@
         }
 
 
+        window.addEventListener('keydown', handleKeypress, false);
+
 
         /******************/
 
-        var $hintMenu = $('#contextMenu');
+        var $contentAssist = $('#contextMenu');
 
 
+        function showContentAssist() {
 
-        function ShowHintMenu() {
-
-
-            $hintMenu.css({ left: x_pos + 10, top: y_pos - 5 });
-            $hintMenu.show();
-
+            $contentAssist.css({ left: x_pos + 10, top: y_pos - 5 });
+            $contentAssist.show();
         }
 
-        //$('#contextMenu').on('click', 'li', function (e) {
-        //    // hide the context menu
-        //    //showContextMenu();
-        //    alert('Context selection: ' + $(this).text());
-        //});
 
     </script>
 
