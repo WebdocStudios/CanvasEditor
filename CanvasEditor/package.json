@@ -1,0 +1,12 @@
+{
+  "name": "canvas-editor",
+  "version": "0.0.0",
+  "description": "CanvasEditor",
+  "main": "server.js",
+  "author": {
+    "name": "ADMIN"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
