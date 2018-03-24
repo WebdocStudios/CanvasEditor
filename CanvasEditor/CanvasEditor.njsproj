@@ -34,7 +34,6 @@
     <Content Include="public\css\site.css">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="README.md" />
     <Content Include="views\index.html">
       <SubType>Code</SubType>
     </Content>
