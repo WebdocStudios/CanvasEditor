@@ -36,6 +36,7 @@
         //Cursor defaults TODO: Create class for cursor
         var cursorOn = false;
         var cursorInterval = 500; //In mmilliseconds
+        var cursorIntervalId = null;
         var cursorWidth = 2;
         var cursorHeight = 15;
 
@@ -44,16 +45,16 @@
         var cursor_x = 6;
         var cursor_y = 5;
 
-        initCursor();
+        startCursor();
 
 
-        function initCursor() {
+        function startCursor() {
 
             //Inital state: turn on
             toggleCursor(true);
 
             //Toggle "blink" state on desired interval (cursorInterval)
-            setInterval(function () {
+            cursorIntervalId = setInterval(function () {
 
                 if (cursorOn) {
                     toggleCursor(false);
@@ -66,7 +67,6 @@
 
         }
 
-
         function toggleCursor(turnOn) {
 
             ctx.moveTo(cursor_x, cursor_y);
@@ -74,12 +74,28 @@
             ctx.lineWidth = cursorWidth;
             ctx.strokeStyle = turnOn ?  'black' : 'white'
             ctx.stroke();
+            ctx.beginPath()
 
             cursorOn = turnOn;
         }
 
+        function stopCursor() {
+
+            if (cursorOn) {
+                toggleCursor(false);
+            }
+
+            clearInterval(cursorIntervalId);
+
+            //Reset the internvalId
+            cursorIntervalId = null;
+        }
+
 
         function writeCharacter(character) {
+
+            //First, stop the blinking cursor
+            stopCursor();
 
             x_pos = (cursorPos * (numOfChars + 1));
 
@@ -87,10 +103,16 @@
             ctx.fillStyle = 'blue';
             ctx.fillText(character, x_pos, y_pos);
 
+            //increase character count
             numOfChars++;
 
-        }
+            //move cursor position to the right by the width of the character
+            cursor_x += 10;
 
+            //Start cursor again
+            startCursor();
+
+        }
 
         function handleKeypress(e) {
 
@@ -108,7 +130,6 @@
             //    //default: alert(code); //Everything else
             //}
         }
-
 
         window.addEventListener('keydown', handleKeypress, false);
 
