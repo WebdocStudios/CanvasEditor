@@ -11,13 +11,11 @@
 </head>
 <body>
 
-    <canvas id="myCanvas" width="500" height="300" style="border: 1px solid #d3d3d3; background-color: white"></canvas>
-    <h4>Press "f" to cause "contentAssist" windows to display</h4>
-    <ul id="contextMenu" style="display: none">
-        <li>fa</li>
-        <li>function</li>
-        <li>final</li>
-    </ul>
+    <div style="border: 0px solid #d3d3d3; padding: 5px; background-color: lightblue; width: 800px; height: 400px">
+        <canvas id="myCanvas" width="800" height="400" style="background-color: white"></canvas>
+    </div>
+    <h4>Type any character</h4>
+
 
     <script>
 
@@ -26,12 +24,13 @@
          *  The next steps are to migrate these functions in to a class, allow multiple lines, and to line up the contentAssist window with the last word typed
          */
 
+
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
 
-        var y_pos = 15;
+        var y_pos = 19;
         var numOfChars = 0;
-        var cursorPos = 9;
+        var cursorPos = 8;
         var x_pos = null;
 
         //Cursor defaults TODO: Create class for cursor
@@ -39,8 +38,11 @@
         var cursorInterval = 500; //In mmilliseconds
         var cursorWidth = 2;
         var cursorHeight = 15;
-        var cursor_x = 50;
-        var cursor_y = 50;
+
+
+        //Default to top left
+        var cursor_x = 6;
+        var cursor_y = 5;
 
         initCursor();
 
@@ -85,23 +87,14 @@
             ctx.fillStyle = 'blue';
             ctx.fillText(character, x_pos, y_pos);
 
-
             numOfChars++;
 
-            //Listen for the letter "f"
-            if (character == 'f') {
-
-                showContentAssist();
-
-            }
         }
 
 
         function handleKeypress(e) {
 
             var code = e.keyCode;
-
-            console.dir(code);
 
             var character = String.fromCharCode(code).toLowerCase();
 
@@ -120,16 +113,6 @@
         window.addEventListener('keydown', handleKeypress, false);
 
 
-        /******************/
-
-        var $contentAssist = $('#contextMenu');
-
-
-        function showContentAssist() {
-
-            $contentAssist.css({ left: x_pos + 10, top: y_pos - 5 });
-            $contentAssist.show();
-        }
 
 
     </script>
