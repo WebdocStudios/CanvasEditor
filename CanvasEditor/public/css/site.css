@@ -4,20 +4,14 @@
 }
 
 #canvas {
-    border: 1px solid red;
+    background-color: white
 }
 
-#canvasContainer {
-    position: relative;
-}
+#canvas-container {
 
-#canvas, #contextMenu {
-    position: absolute;
-}
-
-#contextMenu {
-    border: 1px solid green;
-    background: white;
-    list-style: none;
-    padding: 3px;
+    border: 0px solid #d3d3d3;
+    padding: 5px;
+    background-color: lightblue;
+    width: 800px;
+    height: 400px
 }
