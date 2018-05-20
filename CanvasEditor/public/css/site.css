@@ -1,17 +1,17 @@
 ﻿body {
-    background-color: ivory;
+    background-color: #cfd6e5;
     padding: 10px;
 }
 
 #canvas {
-    background-color: white
+    background-color: snow;
+    cursor: text;
 }
 
 #canvas-container {
-
-    border: 0px solid #d3d3d3;
+    /*border: 0px solid #d3d3d3;*/
     padding: 5px;
-    background-color: lightblue;
+    background-color: #4d6082;
     width: 800px;
     height: 400px
 }

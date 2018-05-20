@@ -86,7 +86,7 @@ function writeCharacter(character) {
     numOfChars++;
 
     //move cursor position to the right by the width of the character
-    cursor_x += 10;
+    cursor_x += 8.5;
 
     //Start cursor again
     startCursor();

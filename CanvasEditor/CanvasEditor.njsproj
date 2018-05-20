@@ -29,6 +29,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="public\js\canvas-editor.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="public\js\site.js">
       <SubType>Code</SubType>
     </Compile>
